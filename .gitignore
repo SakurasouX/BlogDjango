@@ -1,0 +1,4 @@
+.idea
+dev/__pycache__
+posts/__pycache__
+posts/migrations
