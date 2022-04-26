@@ -1,14 +1,21 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
+from django.views import generic
 
 from .models import Post
 
 
-def index(request):
-    pd = Post.objects.all()
-    context = {'posts': pd}
-    return render(request, 'posts/index.html', context)
+class IndexView(generic.ListView):
+    template_name = 'posts/index.html'
+    context_object_name = 'posts'
+
+    def get_queryset(self):
+        return Post.objects.all()
 
 
 def detail(request, post_id):
-    context = {'post_id': post_id}
-    return render(request, 'posts/post_detail.html', context)
+    post = get_object_or_404(Post, pk=post_id)
+    return render(request, 'posts/post_detail.html', {'post': post})
+
+
+def form_text(request):
+    return render(request, 'posts/text_render.html')

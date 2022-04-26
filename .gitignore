@@ -2,3 +2,6 @@
 dev/__pycache__
 posts/__pycache__
 posts/migrations
+posts/DS_Store
+posts/templates/DS_Store
+.DS_Store

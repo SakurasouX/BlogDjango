@@ -5,8 +5,11 @@
     <title>Post Detail</title>
 </head>
 <body>
-    {% if post_id %}
-        <p>Post ID - {{ post_id }}</p>
+    {% if post %}
+        <h1>{{ post.title }}</h1>
+        <p>{{ post.content }}</p>
+        <p>{{ post.pub_date }}</p>
+        <p>Post ID - {{ post.pk }}</p>
     {% endif %}
 </body>
 </html>
