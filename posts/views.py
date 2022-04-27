@@ -12,10 +12,6 @@ class IndexView(generic.ListView):
         return Post.objects.all()
 
 
-def detail(request, post_id):
-    post = get_object_or_404(Post, pk=post_id)
+def detail(request, pk):
+    post = get_object_or_404(Post, pk=pk)
     return render(request, 'posts/post_detail.html', {'post': post})
-
-
-def form_text(request):
-    return render(request, 'posts/text_render.html')
