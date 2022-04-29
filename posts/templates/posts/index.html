@@ -4,19 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Posts</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'posts/style.css' %}">
 </head>
 <body>
-
     {% if posts %}
         <h1>Posts</h1>
         <ul>
-            {% for post in posts %}
-                <li>{{ post.title }}: {{ post.pub_date }} <a href="{% url 'posts:detail' post.id %}">More details</a></li>
-            {% endfor %}
+        {% for post in posts %}
+            <li>{{ post.title }}: {{ post.pub_date }} <a href="{% url 'posts:detail' post.id %}">More details</a></li>
+        {% endfor %}
         </ul>
     {% else %}
         <p>Not found posts</p>
     {% endif %}
-
 </body>
 </html>
