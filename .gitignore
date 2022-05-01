@@ -1,5 +1,5 @@
 .idea
-dev/__pycache__
+blog/__pycache__
 posts/__pycache__
 posts/migrations
 posts/DS_Store
