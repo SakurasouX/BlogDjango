@@ -1,17 +1,34 @@
 from django.shortcuts import render, get_object_or_404
+from django.http import HttpResponseRedirect
+from django.utils import timezone
 from django.views import generic
-
 from .models import Post
 
 
-class IndexView(generic.ListView):
-    template_name = 'posts/index.html'
-    context_object_name = 'posts'
-
-    def get_queryset(self):
-        return Post.objects.all()
+def index(request):
+    posts = Post.objects.all()
+    context = {'posts': posts}
+    return render(request, 'posts/index.html', context)
 
 
 def detail(request, pk):
     post = get_object_or_404(Post, pk=pk)
-    return render(request, 'posts/post_detail.html', {'post': post})
+    return render(request, 'posts/detail.html', {'post': post})
+
+
+def create(request):
+    if request.method == 'POST':
+        post = Post()
+        post.title = request.POST.get('title')
+        post.content = request.POST.get('content')
+        post.pub_date = timezone.now()
+        post.save()
+        return HttpResponseRedirect('/')
+    else:
+        return render(request, 'posts/create.html')
+
+
+def delete(request, pk):
+    post = get_object_or_404(Post, pk=pk)
+    post.delete()
+    return HttpResponseRedirect('/')
