@@ -8,5 +8,6 @@
 <p>{{ post.content }}</p>
 <p>Время добавление статьи: {{ post.pub_date }}</p>
 <p>Время обновления статьи: {{ post.update_time}}</p>
-<a href="{% url 'posts:delete' post.pk %}">Удалить статью?</a>
+<a href="{% url 'posts:update' post.pk %}">Редактировать</a>
+<a href="{% url 'posts:delete' post.pk %}">Удалить</a>
 {% endblock %}

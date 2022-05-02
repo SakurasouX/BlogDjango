@@ -1,1 +1,1 @@
-# DevDjango
+# Blog on Django

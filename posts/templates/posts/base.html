@@ -3,14 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}{% endblock%}</title>
+    <title>{% block title %}{% endblock %}</title>
     {% load static %}
     <link rel="stylesheet" href="{% static 'posts/style.css' %}">
 </head>
 
 <body>
 
-<header class="header"><button><a href="{% url 'posts:create' %}">Добавить статью</a></button></header>
+<header>
+    <a href="/" class="logo">Logo</a>
+    <div class="header-right">
+        <a href="{% url 'posts:create' %}">Добавить статью</a>
+    </div>
+</header>
 
 <div class="main-container">
     {% block content %}{% endblock %}

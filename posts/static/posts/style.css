@@ -3,14 +3,59 @@ html, body {
     padding: 0;
 }
 
+html {
+    font-family: 'Courier New', Courier, monospace;
+}
 
-.header {
+header {
     width: 100%;
-    height: 50px;
+    height: 70px;
     -webkit-box-shadow: 0px 15px 50px -16px rgba(11, 20, 26, 0.1);
     -moz-box-shadow: 0px 15px 50px -16px rgba(11, 20, 26, 0.1);
     box-shadow: 0px 15px 50px -16px rgba(11, 20, 26, 0.1);
-    background-color: lightgreen;
+    background-color: white;
+}
+
+header a {
+    float: left;
+    color: black;
+    text-align: center;
+    padding: 10px;
+    margin-top: 12.5px;
+    text-decoration: none;
+    font-size: 18px;
+    line-height: 25px;
+    border-radius: 4px;
+}
+
+/* Change the background color on mouse-over */
+header a:hover {
+    background-color: lightcoral;
+    color: white;
+}
+
+/* Style the logo link (notice that we set the same value of line-height and font-size to prevent the header to increase when the font gets bigger */
+header a.logo {
+    font-size: 25px;
+    font-weight: bold;
+    margin-left: 100px;
+}
+
+header a.logo:hover {
+    background-color: white;
+    color: black;
+}
+
+/* Style the active/current link*/
+header a.active {
+    background-color: dodgerblue;
+    color: white;
+}
+
+/* Float the link section to the right */
+.header-right {
+    float: right;
+    margin-right: 100px;
 }
 
 .main-container {
