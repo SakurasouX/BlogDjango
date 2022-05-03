@@ -1,0 +1,48 @@
+{% extends "accounts/base.html" %}
+
+{% block title %}Страница регистрации{% endblock %}
+
+{% block content %}
+
+<h1>Страница регистрации</h1>
+
+<form action="">
+    {% csrf_token %}
+
+    <div>
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username">
+    </div>
+
+    <div>
+        <label for="first_name">First name</label>
+        <input type="text" id="first_name" name="first_name">
+    </div>
+
+    <div>
+        <label for="last_name">Last name</label>
+        <input type="text" id="last_name" name="last_name">
+    </div>
+
+    <div>
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email">
+    </div>
+
+    <div>
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password">
+    </div>
+
+    <div>
+        <label for="password_confirm">First name</label>
+        <input type="password" id="password_confirm" name="password_confirm">
+    </div>
+
+    <div>
+        <input type="submit">
+    </div>
+
+</form>
+
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends "accounts/base.html" %}
+
+{% block title %}Страница входа{% endblock %}
+
+{% block content %}
+
+<h1>Страница входа</h1>
+
+<form action="">
+    {% csrf_token %}
+
+    <div>
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username">
+    </div>
+
+    <div>
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password">
+    </div>
+
+    <div>
+        <input type="submit">
+    </div>
+
+</form>
+
+{% endblock %}

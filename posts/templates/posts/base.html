@@ -1,19 +1,20 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}{% endblock %}</title>
     {% load static %}
-    <link rel="stylesheet" href="{% static 'posts/style.css' %}">
+    <link rel="stylesheet" href="{% static 'posts/css/style.css' %}">
 </head>
 
 <body>
 
 <header>
-    <a href="/" class="logo">Logo</a>
+    <a href="{% url 'posts:home' %}" class="logo">Logo</a>
     <div class="header-right">
         <a href="{% url 'posts:create' %}">Добавить статью</a>
+        <a href="{% url 'accounts:login' %}">Войти</a>
     </div>
 </header>
 
