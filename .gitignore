@@ -1,8 +1,12 @@
 .idea
 .DS_Store
+accounts/__pycache__
+accounts/migrations
+accounts/.DS_Store
+accounts/templates/.DS_Store
 blog/__pycache__
 posts/__pycache__
 posts/migrations
-posts/DS_Store
-posts/templates/DS_Store
+posts/.DS_Store
+posts/templates/.DS_Store
 dev_plan.txt
