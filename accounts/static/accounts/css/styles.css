@@ -2,9 +2,49 @@
     box-sizing: border-box;
 }
 
+html, body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    display: flex;
+}
+
 input {
     padding: 10px;
     margin: 10px 0;
-    border:0; 
-    border-bottom:1px solid #eee;
+    border: 0;
+    border-radius: 20px;
+    box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.06);
+    width: 100%;
+    border: 1px solid white;
+    transition: .3s border-color;
+}
+
+input:hover {
+    border: 1px solid lightgray;
+}
+
+input[type=submit] {
+    background-color: lightcoral;
+    color: white;
+}
+
+.authorization {
+    margin: auto;
+    width: 400px;
+}
+
+.authorization div {
+    display: table;
+    margin: 0 auto;
+    width: 80%;
+}
+
+.authorization h1 {
+    display: table;
+    margin: 0 auto;
+    margin-bottom: 30px;
 }
