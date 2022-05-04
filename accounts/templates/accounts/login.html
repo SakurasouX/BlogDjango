@@ -7,7 +7,7 @@
 <div class="authorization">
     <h1>Login page</h1>
 
-    <form action="">
+    <form action="{% url 'accounts:user_login' %}" method="POST">
         {% csrf_token %}
 
         <div>

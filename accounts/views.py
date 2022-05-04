@@ -1,10 +1,22 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect, HttpResponse
 from django.contrib.auth.models import User
+from django.contrib.auth import authenticate, login
 
 
-def login(request):
-    return render(request, 'accounts/login.html')
+def user_login(request):
+    """User login"""
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request, user)
+            return HttpResponseRedirect('/')
+        else:
+            return HttpResponse('Error')
+    else:
+        return render(request, 'accounts/login.html')
 
 
 def registration(request):
