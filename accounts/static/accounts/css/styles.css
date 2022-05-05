@@ -8,10 +8,6 @@ html, body {
     margin: 0;
 }
 
-body {
-    display: flex;
-}
-
 input {
     padding: 10px;
     margin: 10px 0;
@@ -32,18 +28,21 @@ input[type=submit] {
     color: white;
 }
 
-.authorization {
-    margin: auto;
+.div-outer {
+    position: absolute;
     width: 400px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
-.authorization div {
+.div-outer div {
     display: table;
     margin: 0 auto;
     width: 80%;
 }
 
-.authorization h1 {
+.div-outer h1 {
     display: table;
     margin: 0 auto;
     margin-bottom: 30px;

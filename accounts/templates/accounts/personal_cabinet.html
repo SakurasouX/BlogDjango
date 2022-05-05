@@ -1,0 +1,13 @@
+{% extends "accounts/base.html" %}
+
+{% block title %}Personal cabinet{% endblock %}
+
+{% block content %}
+
+<div>
+    <h1>It's your personal cabinet</h1>
+    <p>Your username is {{ user.username }}</p>
+    <a href="{% url 'accounts:password_change' %}">Change password</a>
+</div>
+
+{% endblock %}
