@@ -60,12 +60,15 @@ def personal_cabinet(request):
 def password_change(request):
     """Change user password"""
     if request.method == 'POST':
+        user = request.user
         password1 = request.POST.get('password1')
         password2 = request.POST.get('password2')
-        if password1 == password2:
-            user = request.user
+        user_password = request.POST.get('user_password')
+        if user.check_password(user_password) and password1 == password2:
             user.set_password(password1)
             user.save()
             return HttpResponseRedirect('/')
+        else:
+            return HttpResponse('Error')
     else:
         return render(request, 'accounts/password_change.html')

@@ -6,7 +6,7 @@
 
 <div class="personal_cabinet">
     <h1>It's your personal cabinet</h1>
-    <p>Your username is {{ user.username }}</p>
+    <p>Your username is <strong>{{ user.username }}</strong></p>
     <a href="{% url 'accounts:password_change' %}">Change password</a>
     <a href="{% url 'accounts:user_logout' %}">Logout</a>
 </div>
