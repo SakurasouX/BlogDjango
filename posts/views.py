@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponse
 from django.utils import timezone
 from django.contrib.auth.decorators import login_required
 
@@ -35,14 +35,17 @@ def create(request):
 def update(request, pk):
     """Article update by registered user"""
     post = get_object_or_404(Post, pk=pk)
-    if request.method == 'POST':
-        post.title = request.POST.get('title')
-        post.content = request.POST.get('content')
-        post.update_time = timezone.now()
-        post.save()
-        return HttpResponseRedirect('/')
+    if not post.user == request.user:
+        return HttpResponse('You have no rights to edit this article')
     else:
-        return render(request, 'posts/update.html', {'post': post})
+        if request.method == 'POST':
+            post.title = request.POST.get('title')
+            post.content = request.POST.get('content')
+            post.update_time = timezone.now()
+            post.save()
+            return HttpResponseRedirect('/')
+        else:
+            return render(request, 'posts/update.html', {'post': post})
 
 
 def delete(request, pk):
