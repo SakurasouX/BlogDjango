@@ -19,7 +19,6 @@
             <a href="{% url 'accounts:registration' %}">Registration</a>
         {% else %}
             <a href="{% url 'accounts:personal_cabinet' %}">{{ user.username }}</a>
-            <a href="{% url 'accounts:user_logout' %}">Logout</a>
         {% endif %}
     </div>
 </header>

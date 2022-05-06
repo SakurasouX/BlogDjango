@@ -75,6 +75,7 @@ header a.active {
     margin-bottom: 20px;
 }
 
+
 /* Style post create page */
 
 .post-create {
@@ -114,4 +115,20 @@ header a.active {
 input[type=submit] {
     background-color: lightcoral;
     color: white;
+}
+
+
+/* Style for personal cabinet */
+
+.personal_cabinet {
+    border: 0 solid black;
+    border-radius: 20px;
+    box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.06);
+    padding: 30px;
+
+}
+
+.personal_cabinet h1 {
+    margin: 0;
+    padding: 0;
 }
