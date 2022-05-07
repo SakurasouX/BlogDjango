@@ -49,7 +49,10 @@ def update(request, pk):
 
 
 def delete(request, pk):
-    """Delete article"""
+    """Delete article by user with permissions"""
     post = get_object_or_404(Post, pk=pk)
-    post.delete()
-    return HttpResponseRedirect('/')
+    if request.user == post.user:
+        post.delete()
+        return HttpResponseRedirect('/')
+    else:
+        return HttpResponse('You have no rights to delete this article')
