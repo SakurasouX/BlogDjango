@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponseRedirect, HttpResponse
+from django.core.exceptions import PermissionDenied
 from django.utils import timezone
 from django.contrib.auth.decorators import login_required
 
@@ -36,7 +37,7 @@ def update(request, pk):
     """Article update by registered user"""
     post = get_object_or_404(Post, pk=pk)
     if not post.user == request.user:
-        return HttpResponse('You have no rights to edit this article')
+        raise PermissionDenied()
     else:
         if request.method == 'POST':
             post.title = request.POST.get('title')
@@ -55,4 +56,4 @@ def delete(request, pk):
         post.delete()
         return HttpResponseRedirect('/')
     else:
-        return HttpResponse('You have no rights to delete this article')
+        raise PermissionDenied()
