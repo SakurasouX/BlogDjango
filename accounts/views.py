@@ -15,7 +15,7 @@ def user_login(request):
             login(request, user)
             return HttpResponseRedirect(reverse('posts:home'))
         else:
-            return HttpResponse('Error')
+            return render(request, 'accounts/login.html', {'error': 'Wrong login or password'})
     else:
         return render(request, 'accounts/login.html')
 
@@ -46,7 +46,7 @@ def registration(request):
                 last_name=last_name,
             )
             user.save()
-            return HttpResponseRedirect('/')
+            return HttpResponseRedirect(reverse('posts:home'))
         else:
             return HttpResponse('Passwords do not match')
     else:
@@ -67,8 +67,8 @@ def password_change(request):
         if user.check_password(user_password) and password1 == password2:
             user.set_password(password1)
             user.save()
-            return HttpResponseRedirect('/')
+            return HttpResponseRedirect(reverse('posts:home'))
         else:
-            return HttpResponse('Error')
+            return render(request, 'accounts/password_change.html', {'error': 'The password does not match'})
     else:
         return render(request, 'accounts/password_change.html')

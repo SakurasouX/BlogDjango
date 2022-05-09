@@ -42,7 +42,7 @@ input[type=submit] {
     width: 80%;
 }
 
-.div-outer h1 {
+.div-outer h1, p {
     display: table;
     margin: 0 auto;
     margin-bottom: 30px;
