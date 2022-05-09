@@ -5,10 +5,23 @@
 
 {% block content %}
 <h1>{{ post.title }}</h1>
-<p>{{ post.content }}</p>
-<p>Время добавление статьи: {{ post.pub_date }}</p>
-<p>Время обновления статьи: {{ post.update_time }}</p>
-<p>{{ post.user.username }}</p>
+<p>{{ post.content|linebreaks }}</p>
+<p>Pub date post: {{ post.pub_date }}</p>
+<p>Update time post: {{ post.update_time }}</p>
+<p>Author: <strong>{{ post.user.username }}</strong></p>
 <a href="{% url 'posts:update' post.pk %}">Редактировать</a>
 <a href="{% url 'posts:delete' post.pk %}">Удалить</a>
+
+{% if comments %}
+    {% for comment in comments %}
+        <p>{{ comment.content }}</p>
+    {% endfor %}
+{% endif %}
+
+<form action="{% url 'posts:detail' post.pk %}" method="POST">
+    {% csrf_token %}
+    <textarea name="comments"></textarea>
+    <input type="submit" value="Leave a comment">
+</form>
+
 {% endblock %}

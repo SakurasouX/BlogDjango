@@ -4,13 +4,29 @@
 
 {% block content %}
 
-<h1>Страница редастирования статьи</h1>
+<div class="post-create">
 
-<form action="{% url 'posts:update' post.pk %}" method="POST">
-    {% csrf_token %}
-    <input type="text" value="{{ post.title }}" name="title">
-    <input type="text" value="{{ post.content }}" name="content">
-    <input type="submit">
-</form>
+    <div>
+        <h1>Post update page</h1>
+    </div>
+
+    <form action="{% url 'posts:update' post.id %}" method="POST">
+        {% csrf_token %}
+
+        <div>
+            <input type="text" name="title" value="{{ post.title }}">
+        </div>
+
+        <div class="textarea-div">
+            <textarea name="content">{{ post.content }}</textarea>
+        </div>
+
+        <div>
+            <input type="submit" value="Update">
+        </div>
+
+    </form>
+
+</div>
 
 {% endblock %}

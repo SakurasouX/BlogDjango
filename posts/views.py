@@ -4,7 +4,7 @@ from django.core.exceptions import PermissionDenied
 from django.utils import timezone
 from django.contrib.auth.decorators import login_required
 
-from .models import Post
+from .models import Post, Comment
 
 
 def index(request):
@@ -15,7 +15,15 @@ def index(request):
 
 def detail(request, pk):
     post = get_object_or_404(Post, pk=pk)
-    return render(request, 'posts/detail.html', {'post': post})
+    comments = post.comments.all()
+
+    if request.method == 'POST':
+        new_comment = Comment()
+        new_comment.user = request.user
+        new_comment.content = request.POST.get('comments')
+        new_comment.post = post
+        new_comment.save()
+    return render(request, 'posts/detail.html', {'post': post, 'comments': comments})
 
 
 @login_required()
@@ -42,6 +50,7 @@ def update(request, pk):
         if request.method == 'POST':
             post.title = request.POST.get('title')
             post.content = request.POST.get('content')
+            print(post.content)
             post.update_time = timezone.now()
             post.save()
             return HttpResponseRedirect('/')

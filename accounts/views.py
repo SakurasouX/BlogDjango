@@ -54,6 +54,7 @@ def registration(request):
 
 
 def personal_cabinet(request):
+    """Render user personal cabinet page"""
     return render(request, 'accounts/personal_cabinet.html')
 
 
